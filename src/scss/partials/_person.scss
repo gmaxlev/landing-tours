@@ -1,0 +1,40 @@
+.person {
+  display: flex;
+  @include media-breakpoint-down(md) {
+    flex-direction: column;
+    max-width: 545px;
+    margin: 0 auto;
+  }
+  .pickout {
+    margin-top: 44px;
+  }
+  .scriptum {
+    margin-top: 35px;
+  }
+}
+
+.person__img {
+  width: 50%;
+  padding-right: 15px;
+  box-sizing: border-box;
+  position: relative;
+  @include media-breakpoint-down(md) {
+    width: 100%;
+    padding-right: 0;
+    text-align: center;
+  }
+  & > img {
+    max-width: 100%;
+    transform: translateY(-39px);
+  }
+}
+
+.person__text {
+  width: 50%;
+  padding-left: 15px;
+  box-sizing: border-box;
+  @include media-breakpoint-down(md) {
+    width: 100%;
+    padding-left: 0;
+  }
+}

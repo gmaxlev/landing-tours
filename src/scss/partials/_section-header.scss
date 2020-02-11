@@ -1,0 +1,27 @@
+.section-header {
+  font-family: $font-b;
+  color: $color-b;
+  font-size: 2.75rem;
+  line-height: 2.75rem;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 75px;
+  padding: 0;
+  @include media-breakpoint-down(md) {
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+  }
+  @include media-breakpoint-down(sm) {
+    font-size: 2rem;
+    line-height: 2.2rem;
+    margin-bottom: 40px;
+  }
+  @include media-breakpoint-down(xs) {
+    font-size: 1.7rem;
+    line-height: 1.9rem;
+  }
+}
+
+.section-header_white {
+  color: #fff;
+}

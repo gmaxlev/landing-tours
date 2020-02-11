@@ -1,0 +1,10 @@
+.section {
+  padding: 90px 0;
+  @include media-breakpoint-down(sm) {
+    padding: 60px 0;
+  }
+}
+
+.section_grey {
+  background-color: #f7f8f9;
+}

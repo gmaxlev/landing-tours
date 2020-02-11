@@ -9,7 +9,7 @@ html(lang="ru")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         meta(http-equiv="X-UA-Compatible", content="ie=edge")
 
-        title Ваша планета
+        title Title
 
         // ===============
         // Стили и скрипты
@@ -17,9 +17,555 @@ html(lang="ru")
         link(rel="stylesheet", href="css/main.css")
         script(src="js/jquery.min.js")
         script(src="js/wow.min.js")
+        script(src="js/slick.min.js")
+        script(src="js/jquery.fancybox.min.js")
+        script(src="js/jquery.validate.min.js")
         script(src="js/jquery.mask.min.js")
         
 
     body
 
+
+        // ==============
+        // МОДАЛЬНОЕ ОКНО
+        // ==============
+        .modal#modal-tour
+            .modal__dark
+            .modal__window
+                .modal__close
+                .modal-form
+                    .modal-form__header Подобрать тур
+                    .modal-form__comment Введите имя, номер телефона и мы вам перезвоним.
+                    form.form-modal-1
+                        .modal-form__input
+                            input.input-text.input-text_b(placeholder="Имя" name="name")
+                        .modal-form__input
+                            input.input-text.input-text_b.phone-input(placeholder="Номер телефона" name="phone")
+                        button(type="submit").button.button_b
+                            span Отправить
+                    .formcomplete.formcomplete_modal.formcomplete_ok Спасибо! Мы вам перезвоним.
+                    .formcomplete.formcomplete_modal.formcomplete_error Ошибка.
+
+        // ==============
+        // МОДАЛЬНОЕ ОКНО "ЗАДАТЬ ВОПРОС"
+        // ==============
+        .modal#modal-help
+            .modal__dark
+            .modal__window
+                .modal__close
+                .modal-form
+                    .modal-form__header Подобрать тур
+                    .modal-form__comment Введите имя, номер телефона и мы вам перезвоним.
+                    form.form-modal-2
+                        .modal-form__input
+                            input.input-text.input-text_b(placeholder="Имя" name="name")
+                        .modal-form__input
+                            input.input-text.input-text_b.phone-input(placeholder="Номер телефона" name="phone")
+                        .modal-form__input
+                            textarea.textarea(placeholder="Что вас интересует?" name="message")
+                        button(type="submit").button.button_b
+                            span Отправить
+                    .formcomplete.formcomplete_modal.formcomplete_ok Спасибо! Мы вам перезвоним.
+                    .formcomplete.formcomplete_modal.formcomplete_error Ошибка.
+
+        // ======
+        // HEADER
+        // ======
+        .header-container
+            .container
+                .header
+                    .header__logo
+                        img(src="img/logo.png", alt="")
+                    .header__nav
+                        nav
+                            ul.nav
+                                li.nav__item
+                                    a(href="") Направления
+                                li.nav__item
+                                    a(href="") Как заказать тур
+                                li.nav__item
+                                    a(href="") Круиз Клуб
+                                li.nav__item
+                                    a(href="") Партнёры
+                                li.nav__item
+                                    a(href="") О нас
+                    .header__contacts
+                        a(href="tel:84567877878").header-phone
+                            img(src="img/icons/phone.png", alt="")
+                            span 8 456 787 78 78
+
+        // ===========
+        // ПРИВЕТСТВИЕ
+        // ===========
+        section.intro
+            .intro-bg
+                .intro-bg__video
+                    video(autoplay muted loop)
+                        source(src="videos/Depositphotos_206666512_hd1080.mp4" type="video/mp4")
+            h1.intro__header.wow.fadeInUp(data-wow-delay="0.2s") Организуем культурный отдых<br>на любой вкус
+            .intro__act.wow.fadeInUp(data-wow-delay="0.6s")
+                a(href="" data-modal="modal-tour").button.button_a
+                    span  Подобрать тур
+            
+        // ==============================================
+        // С КЕМ ВЫ ПЛАНИРУЕТЕ ОТПРАВИТЬСЯ В ПУТЕШЕСТВИЕ?
+        // ==============================================
+        section.container-full
+            section.section
+                h2.section-header.wow.fadeInUp(data-wow-delay="0.2s") С кем вы планируете отправиться в путешествие?
+                .travel-cats
+                    .travel-cats__item.wow.zoomIn(data-wow-delay="0.3s")
+                        a(href="").travelto
+                            .travelto__head
+                                .travelto__bg(style="background-image: url(img/Depositphotos_213234804_s-2019.jpg)")
+                                .travelto__title Авторский отдых
+                            .travelto__act
+                                button.button.button_b.show-travel-detail
+                                    span Подробнее
+                        .travel-details
+                            .auth-rest
+                                .auth-rest__text
+                                    h2.article-title Авторский отдых
+                                    .article-subtitle Идеально подойдёт для тех, кто хочет:
+                                    .auth-rest__list
+                                        ul.list-dots
+                                            li.list-dots__item программу "под ключ" с персональными гидами на минигруппу в разных городах маршрута и сопровождение фотографа
+                                            li.list-dots__item подбором сотуриста/компании
+                                            li.list-dots__item гастротуры по разным странам мира
+                                            li.list-dots__item йога/аюрведа программы
+                                    .scriptum Если Вы человек любознательный и нацеленый на что-то качественно новое - этот вид отдыха для Вас!
+                                    .auth-rest__act
+                                        a(href=""  data-modal="modal-tour").button.button_b
+                                            span Подобрать тур
+                    .travel-cats__item.wow.zoomIn(data-wow-delay="0.4s")
+                        a(href="").travelto
+                            .travelto__head
+                                .travelto__bg(style="background-image: url(img/Depositphotos_280992772_s-2019.jpg)")
+                                .travelto__title Отдых для пар
+                            .travelto__act
+                                button.button.button_b
+                                    span Подробнее
+                        .travel-details
+                            .auth-rest
+                                .auth-rest__text
+                                    h2.article-title Отдых для пар
+                                    .article-subtitle Идеально подойдёт для тех, кто хочет:
+                                    .auth-rest__list
+                                        ul.list-dots
+                                            li.list-dots__item программу "под ключ" с персональными гидами на минигруппу в разных городах маршрута и сопровождение фотографа
+                                            li.list-dots__item подбором сотуриста/компании
+                                            li.list-dots__item гастротуры по разным странам мира
+                                            li.list-dots__item йога/аюрведа программы
+                                    .scriptum Если Вы человек любознательный и нацеленый на что-то качественно новое - этот вид отдыха для Вас!
+                                    .auth-rest__act
+                                        a(href=""  data-modal="modal-tour").button.button_b
+                                            span Подобрать тур
+                    .travel-cats__item.wow.zoomIn(data-wow-delay="0.5s")
+                        a(href="").travelto
+                            .travelto__head
+                                .travelto__bg(style="background-image: url(img/Depositphotos_73006457_s-2019.jpg)")
+                                .travelto__title Семейный отдых с малышами
+                            .travelto__act
+                                button.button.button_b
+                                    span Подробнее
+                        .travel-details
+                            .auth-rest
+                                .auth-rest__text
+                                    h2.article-title Семейный отдых с малышами
+                                    .article-subtitle Идеально подойдёт для тех, кто хочет:
+                                    .auth-rest__list
+                                        ul.list-dots
+                                            li.list-dots__item программу "под ключ" с персональными гидами на минигруппу в разных городах маршрута и сопровождение фотографа
+                                            li.list-dots__item подбором сотуриста/компании
+                                            li.list-dots__item гастротуры по разным странам мира
+                                            li.list-dots__item йога/аюрведа программы
+                                    .scriptum Если Вы человек любознательный и нацеленый на что-то качественно новое - этот вид отдыха для Вас!
+                                    .auth-rest__act
+                                        a(href=""  data-modal="modal-tour").button.button_b
+                                            span Подобрать тур
+                    .travel-cats__item.wow.zoomIn(data-wow-delay="0.6s")
+                        a(href="").travelto
+                            .travelto__head
+                                .travelto__bg(style="background-image: url(img/Depositphotos_25046761_s-2019.jpg)")
+                                .travelto__title Семейный отдых с детьми
+                            .travelto__act
+                                button.button.button_b
+                                    span Подробнее
+                        .travel-details
+                            .auth-rest
+                                .auth-rest__text
+                                    h2.article-title Семейный отдых с детьми
+                                    .article-subtitle Идеально подойдёт для тех, кто хочет:
+                                    .auth-rest__list
+                                        ul.list-dots
+                                            li.list-dots__item программу "под ключ" с персональными гидами на минигруппу в разных городах маршрута и сопровождение фотографа
+                                            li.list-dots__item подбором сотуриста/компании
+                                            li.list-dots__item гастротуры по разным странам мира
+                                            li.list-dots__item йога/аюрведа программы
+                                    .scriptum Если Вы человек любознательный и нацеленый на что-то качественно новое - этот вид отдыха для Вас!
+                                    .auth-rest__act
+                                        a(href=""  data-modal="modal-tour").button.button_b
+                                            span Подобрать тур
+                    .travel-cats__item.wow.zoomIn(data-wow-delay="0.7s")
+                        a(href="").travelto
+                            .travelto__head
+                                .travelto__bg(style="background-image: url(img/Depositphotos_35148695_s-2019.jpg)")
+                                .travelto__title Горный детский лагерь в Закарпатье
+                            .travelto__act
+                                button.button.button_b
+                                    span Подробнее
+                        .travel-details
+                            .auth-rest
+                                .auth-rest__text
+                                    h2.article-title Горный детский лагерь в Закарпатье
+                                    .article-subtitle Идеально подойдёт для тех, кто хочет:
+                                    .auth-rest__list
+                                        ul.list-dots
+                                            li.list-dots__item программу "под ключ" с персональными гидами на минигруппу в разных городах маршрута и сопровождение фотографа
+                                            li.list-dots__item подбором сотуриста/компании
+                                            li.list-dots__item гастротуры по разным странам мира
+                                            li.list-dots__item йога/аюрведа программы
+                                    .scriptum Если Вы человек любознательный и нацеленый на что-то качественно новое - этот вид отдыха для Вас!
+                                    .auth-rest__act
+                                        a(href=""  data-modal="modal-tour").button.button_b
+                                            span Подобрать тур
+        
+        // ===============
+        // АВТОРСКИЙ ОТДЫХ
+        // ===============
+        section.section.section_grey#travels
+            .container
+                
+                .travels
+                    div
+                        .auth-rest
+                            .auth-rest__img
+                                img(src="img/Depositphotos_213234804_s-2019.jpg", alt="")
+                            .auth-rest__text
+                                h2.article-title Авторский отдых 1
+                                .article-subtitle Идеально подойдёт для тех, кто хочет:
+                                .auth-rest__list
+                                    ul.list-dots
+                                        li.list-dots__item программу "под ключ" с персональными гидами на минигруппу в разных городах маршрута и сопровождение фотографа
+                                        li.list-dots__item подбором сотуриста/компании
+                                        li.list-dots__item гастротуры по разным странам мира
+                                        li.list-dots__item йога/аюрведа программы
+                                .scriptum Если Вы человек любознательный и нацеленый на что-то качественно новое - этот вид отдыха для Вас!
+                                .auth-rest__act
+                                    a(href=""  data-modal="modal-tour").button.button_b
+                                        span Подобрать тур
+                    div
+                        .auth-rest
+                            .auth-rest__img
+                                img(src="img/Depositphotos_213234804_s-2019.jpg", alt="")
+                            .auth-rest__text
+                                h2.article-title Авторский отдых 2
+                                .article-subtitle Идеально подойдёт для тех, кто хочет:
+                                .auth-rest__list
+                                    ul.list-dots
+                                        li.list-dots__item программу "под ключ" с персональными гидами на минигруппу в разных городах маршрута и сопровождение фотографа
+                                        li.list-dots__item подбором сотуриста/компании
+                                        li.list-dots__item гастротуры по разным странам мира
+                                        li.list-dots__item йога/аюрведа программы
+                                .scriptum Если Вы человек любознательный и нацеленый на что-то качественно новое - этот вид отдыха для Вас!
+                                .auth-rest__act
+                                    a(href=""  data-modal="modal-tour").button.button_b
+                                        span Подобрать тур
+                    div
+                        .auth-rest
+                            .auth-rest__img
+                                img(src="img/Depositphotos_213234804_s-2019.jpg", alt="")
+                            .auth-rest__text
+                                h2.article-title Авторский отдых 3
+                                .article-subtitle Идеально подойдёт для тех, кто хочет:
+                                .auth-rest__list
+                                    ul.list-dots
+                                        li.list-dots__item программу "под ключ" с персональными гидами на минигруппу в разных городах маршрута и сопровождение фотографа
+                                        li.list-dots__item подбором сотуриста/компании
+                                        li.list-dots__item гастротуры по разным странам мира
+                                        li.list-dots__item йога/аюрведа программы
+                                .scriptum Если Вы человек любознательный и нацеленый на что-то качественно новое - этот вид отдыха для Вас!
+                                .auth-rest__act
+                                    a(href=""  data-modal="modal-tour").button.button_b
+                                        span Подобрать тур
+                    div
+                        .auth-rest
+                            .auth-rest__img
+                                img(src="img/Depositphotos_213234804_s-2019.jpg", alt="")
+                            .auth-rest__text
+                                h2.article-title Авторский отдых 4
+                                .article-subtitle Идеально подойдёт для тех, кто хочет:
+                                .auth-rest__list
+                                    ul.list-dots
+                                        li.list-dots__item программу "под ключ" с персональными гидами на минигруппу в разных городах маршрута и сопровождение фотографа
+                                        li.list-dots__item подбором сотуриста/компании
+                                        li.list-dots__item гастротуры по разным странам мира
+                                        li.list-dots__item йога/аюрведа программы
+                                .scriptum Если Вы человек любознательный и нацеленый на что-то качественно новое - этот вид отдыха для Вас!
+                                .auth-rest__act
+                                    a(href=""  data-modal="modal-tour").button.button_b
+                                        span Подобрать тур
+                    div
+                        .auth-rest
+                            .auth-rest__img
+                                img(src="img/Depositphotos_213234804_s-2019.jpg", alt="")
+                            .auth-rest__text
+                                h2.article-title Авторский отдых 5
+                                .article-subtitle Идеально подойдёт для тех, кто хочет:
+                                .auth-rest__list
+                                    ul.list-dots
+                                        li.list-dots__item программу "под ключ" с персональными гидами на минигруппу в разных городах маршрута и сопровождение фотографа
+                                        li.list-dots__item подбором сотуриста/компании
+                                        li.list-dots__item гастротуры по разным странам мира
+                                        li.list-dots__item йога/аюрведа программы
+                                .scriptum Если Вы человек любознательный и нацеленый на что-то качественно новое - этот вид отдыха для Вас!
+                                .auth-rest__act
+                                    a(href=""  data-modal="modal-tour").button.button_b
+                                        span Подобрать тур
+        
+        // =====
+        // ФОРМА
+        // =====
+        section.accent
+            .container
+                h2.section-header.section-header_white.wow.fadeInUp(data-wow-delay="0.2s") Зачем тратить <br>силы и время на самостоятельный выбор тура?
+                form.formfull.formfull-1
+                    .formfull__header.wow.fadeInUp(data-wow-delay="0.3s") Лучше просто укажите пожелания в форме и мы подберем отличный отдых за 20 минут
+                    .inputs.wow.fadeInUp(data-wow-delay="0.5s")
+                        .inputs__item
+                            input.input-text(placeholder="Направление" name="orient")
+                        .inputs__item
+                            input.input-text(placeholder="Бюджет" name="price")
+                        .inputs__item
+                            input.input-text(placeholder="Имя" name="name")
+                        .inputs__item
+                            input.input-text.phone-input(placeholder="Телефон для связи" name="phone")
+                    .formfull__act.wow.fadeInUp(data-wow-delay="0.8s")
+                        button(type="submit").button.button_a
+                            span Подобрать тур
+                .formcomplete.formcomplete_big.formcomplete_ok Спасибо! Мы вам перезвоним.
+                .formcomplete.formcomplete_big.formcomplete_error Ошибка.
+        
+        // =====
+        // АВТОР
+        // =====
+        section.section
+            .container
+                .person
+                    .person__img.wow.fadeInLeft(data-wow-delay="0.6s")
+                        img(src="img/president.png", alt="")
+                        .document
+                            a(data-fancybox="gallery" href="img/photo_2020-02-11_14-48-50.jpg").document__img
+                                img(src="img/doc.png", alt="")
+                            img(src="img/symbol.png", alt="").document__symb
+                    .person__text
+                        h2.article-title.wow.fadeInUp(data-wow-delay="0.2s") Меня зовут Юлия Костевич
+                        .article-bottitle.wow.fadeInUp(data-wow-delay="0.5s") и мое агентство организует отдых, которого вы так давно ждали.
+                        .article-subtitle.wow.fadeInUp(data-wow-delay="0.8s") Почему я так уверена?
+                        .pickout 
+                            ul.img-list
+                                li.img-list__item.wow.fadeInUp(data-wow-delay="1s") мы подбираем тур с учетом самых подробных пожеланий: будь то рай для дайвинга, бесплатные коктейли или рыбный ресторан на территории отеля
+                                li.img-list__item.wow.fadeInUp(data-wow-delay="1.1s") мы тщательно все проверяем: читаем отзывы, опрашиваем клиентов, наводим справки
+                                li.img-list__item.wow.fadeInUp(data-wow-delay="1.2s") я лично побывала более чем в 10 странах - от Чехии до Египта - и знаю, как избежать неприятных сюрпризов
+                            .scriptum.wow.fadeInUp(data-wow-delay="1.5s") А главное - я всегда стараюсь угодить клиентам, а они доверяют мне и советуют друзьям.
+                            .scriptum.scriptum_cont.wow.fadeInUp(data-wow-delay="1.8s") Только так возможно получить награду <span>«Выбор года»</span>, которой нашу работу отметили в 2019 году.
+
+        // ======
+        // ОТЗЫВЫ
+        // ======
+        section.section.section_grey
+            .container
+                h2.section-header.wow.fadeInUp(data-wow-delay="0.2s") Отзывы
+                .reviews
+                    .slider-arrow
+                        .slider-arrow__item.slider-arrow_prev
+                        .slider-arrow__item.slider-arrow_next
+                    .reviews__slider
+                        .reviews__item.wow.zoomIn(data-wow-delay="0.2s")
+                            img(src="img/review.png", alt="")
+                        .reviews__item.wow.zoomIn(data-wow-delay="0.3s")
+                            img(src="img/review.png", alt="")
+                        .reviews__item.wow.zoomIn(data-wow-delay="0.4s")
+                            img(src="img/review.png", alt="")
+                        .reviews__item.wow.zoomIn(data-wow-delay="0.5s")
+                            img(src="img/review.png", alt="")
+                        .reviews__item.wow.zoomIn(data-wow-delay="0.2s")
+                            img(src="img/review.png", alt="")
+                        .reviews__item.wow.zoomIn(data-wow-delay="0.3s")
+                            img(src="img/review.png", alt="")
+                        .reviews__item.wow.zoomIn(data-wow-delay="0.4s")
+                            img(src="img/review.png", alt="")
+                        .reviews__item.wow.zoomIn(data-wow-delay="0.5s")
+                            img(src="img/review.png", alt="")
+                        .reviews__item.wow.zoomIn(data-wow-delay="0.2s")
+                            img(src="img/review.png", alt="")
+                        .reviews__item.wow.zoomIn(data-wow-delay="0.3s")
+                            img(src="img/review.png", alt="")
+                        .reviews__item.wow.zoomIn(data-wow-delay="0.4s")
+                            img(src="img/review.png", alt="")
+                        .reviews__item.wow.zoomIn(data-wow-delay="0.5s")
+                            img(src="img/review.png", alt="")
+
+        // ================
+        // ВСТУПАЙТЕ В КЛУБ
+        // ================
+        section.section
+            .container
+                .presnt
+                    .presnt__img.wow.fadeInLeft(data-wow-delay="0.5s")
+                        img(src="img/4112.png", alt="")
+                    .presnt__art
+                        h2.article-title.article-title_line.wow.fadeInUp(data-wow-delay="0.2s") Вступайте <br>в клуб круизного отдыха!
+                        .art.wow.fadeInUp(data-wow-delay="0.4s") Присоединяйтесь к закрытому клубу inCruises и получите невероятные возможности:
+                        .pickout
+                            ul.img-list.img-list_marg
+                                li.img-list__item.wow.fadeInUp(data-wow-delay="0.6s") путешествуйте по минимальным ценам, напрямую от круизной компании
+                                li.img-list__item.wow.fadeInUp(data-wow-delay="0.8s") бесплатные круизы для партнеров клуба
+                                li.img-list__item.wow.fadeInUp(data-wow-delay="1s") зарабатывайте на привлечении новых участников
+                        .scriptum.wow.fadeInUp(data-wow-delay="1.2s") Узнайте больше о inCruises - клубе, в котором состоят люди из 170 стран мира
+                        a(href=""  data-modal="modal-tour" data-wow-delay="1.7s").button.button_b.wow.fadeInUp
+                            span Подробнее
+
+        // ======
+        // ПАРТНЕРЫ
+        // ======
+        section.section.section_grey
+            .container
+                h2.section-header.wow.fadeInUp(data-wow-delay="0.2s") Наши партнеры
+                .brands
+                    a(href="" data-wow-delay="0.3s").brands__item.wow.zoomIn
+                        img(src="img/partners/1.png", alt="")
+                    a(href="" data-wow-delay="0.4s").brands__item.wow.zoomIn
+                        img(src="img/partners/2.png", alt="")
+                    a(href="" data-wow-delay="0.5s").brands__item.wow.zoomIn
+                        img(src="img/partners/3.png", alt="")
+                    a(href="" data-wow-delay="0.6s").brands__item.wow.zoomIn
+                        img(src="img/partners/4.png", alt="")
+                        
+        // ================
+        // ПОЧЕМУ ВЫ НЕ НАЙДЕТЕ ДЕШЕВЛЕ
+        // ================
+        section.section
+            .container
+                .presnt
+                    .presnt__img.wow.fadeInLeft(data-wow-delay="0.5s")
+                        img(src="img/4112.png", alt="")
+                    .presnt__art
+                        h2.article-title.article-title_line.wow.fadeInUp(data-wow-delay="0.2s") Почему вы не найдете дешевле?
+                        .pickout 
+                            .art.wow.fadeInUp(data-wow-delay="0.3s") Все турагентства работают в одной системе и не имеют возможности поднять цену, установленную туроператором.
+                            .art.wow.fadeInUp(data-wow-delay="0.4s") Поэтому вы можете потратить на поиски 3 дня, но закажете тур по той же цене.
+                        .scriptum.wow.fadeInUp(data-wow-delay="0.5s") Зато мы сможем сравнить предложения <br>на рынке и выбрать для вас самое  выгодное!
+        
+        // ================
+        // С НАМИ ВЫ В БЕЗОПАСНОСТИ
+        // ================
+        section.section.section_grey
+            .container
+                .presnt.presnt_rev
+                    .presnt__img.wow.fadeInRight(data-wow-delay="0.5s")
+                        img(src="img/4122.png", alt="")
+                    .presnt__art
+                        h2.article-title.article-title_line.wow.fadeInUp(data-wow-delay="0.2s") Почему вы не найдете дешевле?
+                        .pickout 
+                            .art.wow.fadeInUp(data-wow-delay="0.3s") Вы заключаете договор с крупным туроператором - Anex Tour, Join Up, TezTour или TUI. Он несет полную ответственность за перелет, медицинскую страховку и ваше пребывание за границей.
+                        .scriptum.wow.fadeInUp(data-wow-delay="0.4s") Наша задача - ответить на все ваши вопросы и организовать незабываемый отдых. Давайте так и сделаем!
+        
+        // ================
+        // С НЕГО НАЧАТЬ
+        // ================
+        section.section
+            .container.container_rel
+                h2.section-header.wow.fadeInUp(data-wow-delay="0.2s") Почему вы не найдете дешевле?С чего начать?
+                .steps
+                    .steps__map
+                    .steps__item.wow.zoomIn(data-wow-delay="0.3s") Почему вы не найдете дешевле?
+                        .steps__img
+                            img(src="img/icons/map.svg", alt="")
+                        .steps__name Заполните форму
+                        .steps__comment Мы перезвоним, чтобы уточнить детали и в течение дня подберем 3-5 вариантов
+                    .steps__item.wow.zoomIn(data-wow-delay="0.4s")
+                        .steps__img
+                            img(src="img/icons/map2.svg", alt="")
+                        .steps__name Рассмотрите  варианты
+                        .steps__comment Оцените предложенные туры и выберите лучший. Или свяжитесь для консультации
+                    .steps__item.wow.zoomIn(data-wow-delay="0.5s")
+                        .steps__img
+                            img(src="img/icons/map3.svg", alt="")
+                        .steps__name Подпишите договор
+                        .steps__comment Вы закрепляете за собой места, а туроператор гарантирует вашу безопасность
+                    .steps__item.wow.zoomIn(data-wow-delay="0.6s")
+                        .steps__img
+                            img(src="img/icons/map4.svg", alt="")
+                        .steps__name Внесите оплату
+                        .steps__comment Официально через банк или наличкой, как вам удобнее
+                    .steps__item.wow.zoomIn(data-wow-delay="0.7s")
+                        .steps__img
+                            img(src="img/icons/map5.svg", alt="")
+                        .steps__name Получите документы
+                        .steps__comment Мы отправляем почтой билеты и все необходимые документы, дублируем в электронном виде
+                    .steps__item.wow.zoomIn(data-wow-delay="0.8s")
+                        .steps__img
+                            img(src="img/icons/map6.svg", alt="")
+                        .steps__name Отправляйтесь на отдых!
+                        .steps__comment Все позади и остается только одно - расслабиться и наслаждаться отпуском
+        // =====
+        // ФОРМА
+        // =====
+        section.accent
+            .container
+                h2.section-header.section-header_white.wow.fadeInUp(data-wow-delay="0.2s") Зачем тратить <br>силы и время на самостоятельный выбор тура?
+                form.formfull.formfull-2
+                    .formfull__header.wow.fadeInUp(data-wow-delay="0.3s") Лучше просто укажите пожелания в форме и мы подберем отличный отдых за 20 минут
+                    .inputs.wow.fadeInUp(data-wow-delay="0.5s")
+                        .inputs__item
+                            input.input-text(placeholder="Направление" name="orient")
+                        .inputs__item
+                            input.input-text(placeholder="Бюджет" name="price")
+                        .inputs__item
+                            input.input-text(placeholder="Имя" name="name")
+                        .inputs__item
+                            input.input-text.phone-input(placeholder="Телефон для связи" name="phone")
+                    .formfull__act.wow.fadeInUp(data-wow-delay="0.8s")
+                        button(type="submit").button.button_a
+                            span Подобрать тур
+                .formcomplete.formcomplete_big.formcomplete_ok Спасибо! Мы вам перезвоним.
+                .formcomplete.formcomplete_big.formcomplete_error Ошибка.
+        // ================
+        // СОВЕТ
+        // ================
+        section.section
+            .container.container_rel
+                h2.section-header.wow.fadeInUp(data-wow-delay="0.2s") Нужен совет?
+                .advice
+                    .scriptum.wow.fadeInUp(data-wow-delay="0.5s") Если в чем-то сомневаетесь - лучше спросите. <br>Мы всегда на связи и рады помочь.
+                    .mini-text.wow.fadeInUp(data-wow-delay="0.9s") Даже если вы где-то в джунглях Шри-Ланки:)
+                    .advice__act.wow.fadeInUp(data-wow-delay="1.2s")
+                        a(href=""  data-modal="modal-help").button.button_c
+                            span Задать вопрос
+                .social
+                    .social__list.wow.fadeInUp(data-wow-delay="2s")
+                        a(href="")
+                            img(src="img/icons/facebook-messenger.svg", alt="")
+                        a(href="")
+                            img(src="img/icons/telegram.svg", alt="")
+                        a(href="")
+                            img(src="img/icons/viber.svg", alt="")
+                    .scriptum.wow.fadeInUp(data-wow-delay="2s") Хорошего отдыха!
+        
+        // ======
+        // FOOTER
+        // ======
+        footer.footer
+            .container
+                .footer__content
+                    .footer__copy © 2019. Название. Все права защищены <br>Разработка: tkachuk.pro
+                    .footer__contacts
+                        .foot-contacts
+                            a(href="tel:84567877878").foot-contacts__item
+                                img(src="img/icons/telephone.png", alt="")
+                                span 8 456 787 78 78
+                            a(href="mailto:mail@mail.com").foot-contacts__item
+                                img(src="img/icons/email.png", alt="")
+                                span mail@mail.com
         script(src="js/main.js")

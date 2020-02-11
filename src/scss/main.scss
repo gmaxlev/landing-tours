@@ -13,7 +13,60 @@
 // animate.css
 @import "./vendor/animate";
 
-// Глобальные стили
+// slick
+@import "./vendor/slick";
+@import "./vendor/slick-theme";
+
+// fancyapps
+@import "./vendor/jquery.fancybox.min.css"; // Глобальные стили
+
 @import "./global";
 
 // Блоки (БЭМ)
+@import "./partials/container";
+@import "./partials/header";
+@import "./partials/nav";
+@import "./partials/header-phone";
+@import "./partials/intro";
+@import "./partials/header-container";
+@import "./partials/button";
+@import "./partials/section";
+@import "./partials/container-full";
+@import "./partials/section-header";
+@import "./partials/travel-cats";
+@import "./partials/travelto";
+@import "./partials/intro-bg";
+@import "./partials/auth-rest";
+@import "./partials/article-title";
+@import "./partials/article-subtitle";
+@import "./partials/list-dots";
+@import "./partials/scriptum";
+@import "./partials/accent";
+@import "./partials/formfull";
+@import "./partials/inputs";
+@import "./partials/input-text";
+@import "./partials/select";
+@import "./partials/person";
+@import "./partials/article-bottitle";
+@import "./partials/pickout";
+@import "./partials/img-list";
+@import "./partials/document";
+@import "./partials/reviews";
+@import "./partials/slide-pagin";
+@import "./partials/slider-arrow";
+@import "./partials/presnt";
+@import "./partials/art";
+@import "./partials/brands";
+@import "./partials/steps";
+@import "./partials/advice";
+@import "./partials/mini-text";
+@import "./partials/social";
+@import "./partials/footer";
+@import "./partials/foot-contacts";
+@import "./partials/modal";
+@import "./partials/modal-form";
+@import "./partials/travels";
+@import "./partials/travel-details";
+@import "./partials/valerror";
+@import "./partials/formcomplete";
+@import "./partials/textarea";

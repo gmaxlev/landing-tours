@@ -1,0 +1,30 @@
+.footer {
+  background-color: #000;
+  color: #fff;
+}
+
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  padding: 23px 0;
+  @include media-breakpoint-down(sm) {
+    flex-direction: column;
+    text-align: center;
+    flex-wrap: wrap;
+  }
+}
+
+.footer__contacts {
+  @include media-breakpoint-down(sm) {
+    order: 1;
+  }
+}
+.footer__copy {
+  line-height: 1.25rem;
+  @include media-breakpoint-down(sm) {
+    order: 2;
+    margin-top: 20px;
+  }
+}

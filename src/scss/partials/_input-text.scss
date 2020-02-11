@@ -1,0 +1,24 @@
+.input-text {
+  outline: none;
+  font-weight: 200;
+  color: $color-d;
+  font-size: 0.875rem;
+  padding: 15px;
+  box-sizing: border-box;
+  border: none;
+  transition: box-shadow 0.5s, opacity 0.5s;
+  &:focus {
+    box-shadow: inset 0px 0px 4px 2px rgba(0, 0, 0, 0.17);
+  }
+  &::placeholder {
+    color: $color-c;
+    font-size: 0.8125rem;
+  }
+  &:disabled {
+    opacity: 0.3;
+  }
+}
+
+.input-text_b {
+  border: 1px solid #dfdfdf;
+}

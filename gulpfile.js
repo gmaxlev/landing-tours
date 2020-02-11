@@ -18,6 +18,7 @@ const paths = {
   scss: "src/scss/main.scss",
   html: "src/views/*.pug",
   js: "src/js/**/*.js",
+  videos: "src/videos/**/*",
   images: "src/images/**/*",
   fonts: "src/fonts/**/*",
   googltFonts: "src/googleFonts.list"
@@ -104,11 +105,19 @@ function js() {
   );
 }
 
-function images() {
+function videos() {
   return gulp
-    .src(paths["images"])
-    .pipe(newer("dist/img"))
-    .pipe(
+    .src(paths["videos"])
+    .pipe(gulp.dest("dist/videos"))
+    .pipe(browsersync.stream());
+}
+
+function images() {
+  return (
+    gulp
+      .src(paths["images"])
+      .pipe(newer("dist/img"))
+      /* .pipe(
       imagemin([
         imagemin.gifsicle({
           interlaced: true
@@ -129,9 +138,10 @@ function images() {
           ]
         })
       ])
-    )
-    .pipe(gulp.dest("dist/img"))
-    .pipe(browsersync.stream());
+    ) */
+      .pipe(gulp.dest("dist/img"))
+      .pipe(browsersync.stream())
+  );
 }
 
 function googleFonts() {
@@ -166,6 +176,7 @@ function watchFiles() {
   gulp.watch(paths["images"], gulp.series(images));
   gulp.watch(paths["googltFonts"], gulp.series(googleFonts));
   gulp.watch(paths["js"], gulp.series(js));
+  gulp.watch(paths["videos"], gulp.series(videos));
   gulp.watch("src/fonts/**/*.ttf", gulp.series(ttfFontmin));
   gulp.watch("src/svg/*.svg", gulp.series(gensvgsprite));
 }
@@ -188,6 +199,7 @@ exports.images = images;
 exports.googleFonts = googleFonts;
 exports.watch = watch;
 exports.js = js;
+exports.videos = videos;
 exports.ttfFontmin = ttfFontmin;
 exports.svgsprite = gensvgsprite;
 exports.build = gulp.parallel(
@@ -197,7 +209,8 @@ exports.build = gulp.parallel(
   googleFonts,
   js,
   ttfFontmin,
-  gensvgsprite
+  gensvgsprite,
+  videos
 );
 
 // const clean = require('gulp-clean-css');

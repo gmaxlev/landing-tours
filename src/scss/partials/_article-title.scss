@@ -1,0 +1,37 @@
+.article-title {
+  font-family: $font-b;
+  font-size: 2.75rem;
+  line-height: 2.25rem;
+  margin: 0;
+  padding: 0;
+  color: $color-b;
+  @include media-breakpoint-down(md) {
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+  }
+  @include media-breakpoint-down(sm) {
+    font-size: 2rem;
+    line-height: 2.2rem;
+    margin-bottom: 40px;
+  }
+  @include media-breakpoint-down(xs) {
+    font-size: 1.7rem;
+    line-height: 1.9rem;
+  }
+}
+
+.article-title_line {
+  position: relative;
+  &::after {
+    content: "";
+    width: 55px;
+    height: 1px;
+    background-color: $color-b;
+    position: absolute;
+    top: 18px;
+    left: -87px;
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+  }
+}

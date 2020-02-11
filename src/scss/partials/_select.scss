@@ -1,0 +1,37 @@
+.select {
+  position: relative;
+  display: inline-block;
+  font-size: 0.875rem;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 7px;
+    height: 10px;
+    right: 15px;
+    background-image: url(../img/arrow-down.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  select {
+    width: 100%;
+    outline: none;
+    font-weight: 200;
+    color: $color-d;
+    font-size: 0.875rem;
+    padding: 15px;
+    box-sizing: border-box;
+    border: none;
+    transition: box-shadow 0.5s;
+    appearance: none;
+    min-height: 46px;
+
+    &:required:invalid {
+      color: $color-c;
+      font-size: 0.8125rem;
+    }
+  }
+}

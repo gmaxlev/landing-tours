@@ -1,0 +1,58 @@
+.document {
+  position: absolute;
+  bottom: -64px;
+  right: -93px;
+  @include media-breakpoint-down(md) {
+    bottom: 0;
+    right: 0;
+  }
+}
+
+.document__img {
+  cursor: pointer;
+  &:hover {
+    &::after {
+      opacity: 1;
+    }
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    bottom: 14px;
+    right: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    background-image: url(../img/zoom-in.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    transition: opacity 0.5s;
+  }
+  & > img {
+    max-width: 100%;
+    border: 10px solid rgba(255, 255, 255, 0.49);
+    border-radius: 11px;
+    box-shadow: 6px 12px 19px 0px rgba(0, 0, 0, 0.13);
+    @include media-breakpoint-down(sm) {
+      max-width: 120px;
+    }
+    @include media-breakpoint-down(xs) {
+      max-width: 86px;
+    }
+  }
+}
+
+.document__symb {
+  position: absolute;
+  bottom: -1px;
+  left: -58px;
+  @include media-breakpoint-down(sm) {
+    max-width: 120px;
+  }
+  @include media-breakpoint-down(xs) {
+    left: -40px;
+    max-width: 93px;
+  }
+}

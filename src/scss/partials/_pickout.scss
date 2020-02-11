@@ -1,0 +1,6 @@
+.pickout {
+  padding-left: 98px;
+  @include media-breakpoint-down(md) {
+    padding-left: 0;
+  }
+}

@@ -1,0 +1,25 @@
+.foot-contacts {
+  font-size: 0.875rem;
+  display: flex;
+  @include media-breakpoint-down(sm) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.foot-contacts__item {
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+  color: #fff;
+  @include media-breakpoint-down(sm) {
+    margin-left: 0;
+    margin-bottom: 5px;
+  }
+  & > img {
+    margin-right: 10px;
+  }
+  &:first-child {
+    margin-left: 0;
+  }
+}
