@@ -1,5 +1,13 @@
 new WOW().init();
 
+/* 
+  Миминамальная длина для номера телефона
+*/
+var minPhoneLength = 10;
+
+/* 
+  Обработчик ошибок
+*/
 function showError(error, element) {
   if (
     $(element)
@@ -18,10 +26,16 @@ function showError(error, element) {
   return true;
 }
 
+/* 
+  Маска для номера телефона
+*/
 $(".phone-input").mask("+38 (000) 000 00 00", {
   placeholder: "+38 (___) ___ __ __"
 });
 
+/* 
+  Стилизация шапки при прокрутке
+*/
 (function() {
   function headerToScroll() {
     if ($(window).scrollTop() > 100) {
@@ -34,6 +48,9 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
   $(window).scroll(headerToScroll);
 })();
 
+/* 
+  Слайдер "Отзывы"
+*/
 (function() {
   $(".reviews__slider").slick({
     infinite: true,
@@ -91,6 +108,9 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
   });
 })();
 
+/* 
+  Модальные окна
+*/
 (function() {
   function openModalWindow(id) {
     var modal = $("#" + id);
@@ -119,6 +139,9 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
   });
 })();
 
+/* 
+  Типы отдыхов
+*/
 (function() {
   var select = false;
   var anim = false;
@@ -126,7 +149,6 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
     e.preventDefault();
     if (anim) return;
     var index = $(this).index();
-    console.log(index);
     if (index === select) return;
     if (select === false) {
       anim = true;
@@ -164,6 +186,9 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
 })();
 
 (function() {
+  /* 
+    Окно "Подобрать тур"
+  */
   $(".form-modal-1")
     .submit(function(e) {
       e.preventDefault();
@@ -185,7 +210,7 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
               return true;
             }
           },
-          minlength: 19
+          minlength: minPhoneLength
         }
       },
 
@@ -242,9 +267,10 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
           .prop("disabled", true);
       }
     });
-})();
 
-(function() {
+  /* 
+    Окно "Задать вопрос"
+  */
   $(".form-modal-2")
     .submit(function(e) {
       e.preventDefault();
@@ -266,7 +292,7 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
               return true;
             }
           },
-          minlength: 19
+          minlength: minPhoneLength
         }
       },
 
@@ -279,7 +305,6 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
       },
       errorPlacement: showError,
       submitHandler: function(form) {
-        alert(123);
         $.ajax({
           url: "send.php",
           type: "POST",
@@ -317,180 +342,107 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
     });
 })();
 
+/* 
+  Формы на странице
+*/
 (function() {
+  validate = {
+    rules: {
+      name: {
+        required: {
+          depends: function() {
+            $(this).val($.trim($(this).val()));
+            return true;
+          }
+        }
+      },
+      phone: {
+        required: {
+          depends: function() {
+            $(this).val($.trim($(this).val()));
+            return true;
+          }
+        },
+        minlength: minPhoneLength
+      }
+    },
+
+    success: function(label, element) {
+      $(element)
+        .parent()
+        .find(".valerror")
+        .remove();
+      return true;
+    },
+    errorPlacement: showError,
+    submitHandler: function(form) {
+      $.ajax({
+        url: "send.php",
+        type: "POST",
+        data: {
+          form: "landing",
+          name: $(form)
+            .find('input[name ="name"]')
+            .val(),
+          phone: $(form)
+            .find('input[name ="phone"]')
+            .val(),
+          orient: $(form)
+            .find('input[name ="orient"]')
+            .val(),
+          price: $(form)
+            .find('input[name ="price"]')
+            .val(),
+          date: $(form)
+            .find('input[name ="date"]')
+            .val(),
+          duration: $(form)
+            .find('input[name ="duration"]')
+            .val(),
+          count: $(form)
+            .find('input[name ="count"]')
+            .val(),
+          baby: $(form)
+            .find('input[name ="baby"]')
+            .val()
+        },
+        success: function() {
+          $(form)
+            .siblings(".formcomplete_ok")
+            .slideDown(500);
+        },
+        error: function() {
+          $(form)
+            .siblings(".formcomplete_error")
+            .slideDown(500);
+        }
+      });
+      $(form)
+        .find(".input-text, .textarea")
+        .prop("disabled", true)
+        .val("");
+      $(form)
+        .find(".button")
+        .prop("disabled", true);
+    }
+  };
+
   $(".formfull-1")
     .submit(function(e) {
       e.preventDefault();
     })
-    .validate({
-      rules: {
-        name: {
-          required: {
-            depends: function() {
-              $(this).val($.trim($(this).val()));
-              return true;
-            }
-          }
-        },
-        phone: {
-          required: {
-            depends: function() {
-              $(this).val($.trim($(this).val()));
-              return true;
-            }
-          },
-          minlength: 19
-        }
-      },
+    .validate(validate);
 
-      success: function(label, element) {
-        $(element)
-          .parent()
-          .find(".valerror")
-          .remove();
-        return true;
-      },
-      errorPlacement: showError,
-      submitHandler: function(form) {
-        $.ajax({
-          url: "send.php",
-          type: "POST",
-          data: {
-            form: "landing",
-            name: $(form)
-              .find('input[name ="name"]')
-              .val(),
-            phone: $(form)
-              .find('input[name ="phone"]')
-              .val(),
-            orient: $(form)
-              .find('input[name ="orient"]')
-              .val(),
-            price: $(form)
-              .find('input[name ="price"]')
-              .val(),
-            date: $(form)
-              .find('input[name ="date"]')
-              .val(),
-            duration: $(form)
-              .find('input[name ="duration"]')
-              .val(),
-            count: $(form)
-              .find('input[name ="count"]')
-              .val(),
-            baby: $(form)
-              .find('input[name ="baby"]')
-              .val()
-          },
-          success: function() {
-            $(form)
-              .siblings(".formcomplete_ok")
-              .slideDown(500);
-          },
-          error: function() {
-            $(form)
-              .siblings(".formcomplete_error")
-              .slideDown(500);
-          }
-        });
-        $(form)
-          .find(".input-text, .textarea")
-          .prop("disabled", true)
-          .val("");
-        $(form)
-          .find(".button")
-          .prop("disabled", true);
-      }
-    });
-})();
-
-(function() {
   $(".formfull-2")
     .submit(function(e) {
       e.preventDefault();
     })
-    .validate({
-      rules: {
-        name: {
-          required: {
-            depends: function() {
-              $(this).val($.trim($(this).val()));
-              return true;
-            }
-          }
-        },
-        phone: {
-          required: {
-            depends: function() {
-              $(this).val($.trim($(this).val()));
-              return true;
-            }
-          },
-          minlength: 19
-        }
-      },
-
-      success: function(label, element) {
-        $(element)
-          .parent()
-          .find(".valerror")
-          .remove();
-        return true;
-      },
-      errorPlacement: showError,
-      submitHandler: function(form) {
-        $.ajax({
-          url: "send.php",
-          type: "POST",
-          data: {
-            form: "landing",
-            name: $(form)
-              .find('input[name ="name"]')
-              .val(),
-            phone: $(form)
-              .find('input[name ="phone"]')
-              .val(),
-            orient: $(form)
-              .find('input[name ="orient"]')
-              .val(),
-            price: $(form)
-              .find('input[name ="price"]')
-              .val(),
-            date: $(form)
-              .find('input[name ="date"]')
-              .val(),
-            duration: $(form)
-              .find('input[name ="duration"]')
-              .val(),
-            count: $(form)
-              .find('input[name ="count"]')
-              .val(),
-            baby: $(form)
-              .find('input[name ="baby"]')
-              .val()
-          },
-          success: function() {
-            $(form)
-              .siblings(".formcomplete_ok")
-              .slideDown(500);
-          },
-          error: function() {
-            $(form)
-              .siblings(".formcomplete_error")
-              .slideDown(500);
-          }
-        });
-        $(form)
-          .find(".input-text, .textarea")
-          .prop("disabled", true)
-          .val("");
-        $(form)
-          .find(".button")
-          .prop("disabled", true);
-      }
-    });
+    .validate(validate);
 })();
 
+/* 
+  Плавная прокрутка от элемента [data-scrollto="id"] к id
+*/
 (function() {
   $("[data-scrollto]").on("click", function(e) {
     e.preventDefault();
