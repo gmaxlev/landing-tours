@@ -43,8 +43,8 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
     customPaging: function(slick, index) {
       return "<div class='slide-pagin'></div>";
     },
-    prevArrow: $(".slider-arrow_prev"),
-    nextArrow: $(".slider-arrow_next"),
+    prevArrow: $(".slider-arrow-reviews > .slider-arrow_prev"),
+    nextArrow: $(".slider-arrow-reviews > .slider-arrow_next"),
     responsive: [
       {
         breakpoint: 768,
@@ -67,6 +67,8 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
     slidesToShow: 4,
     slidesToScroll: 4,
     dots: true,
+    prevArrow: $(".slider-arrow-partners > .slider-arrow_prev"),
+    nextArrow: $(".slider-arrow-partners > .slider-arrow_next"),
     customPaging: function(slick, index) {
       return "<div class='slide-pagin'></div>";
     },
@@ -124,7 +126,8 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
     e.preventDefault();
     if (anim) return;
     var index = $(this).index();
-    if (index == select) return;
+    console.log(index);
+    if (index === select) return;
     if (select === false) {
       anim = true;
       $("#travels").show();
