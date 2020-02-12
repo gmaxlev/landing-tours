@@ -29,6 +29,10 @@
                 <div class="modal-form__header">Подобрать тур</div>
                 <div class="modal-form__comment">Введите имя, номер телефона и мы вам перезвоним.</div>
                 <form class="form-modal-1">
+                    <div class="modal-form__input"><input class="input-text input-text_b" placeholder="Желаемые даты вылета" name="date" /></div>
+                    <div class="modal-form__input"><input class="input-text input-text_b" placeholder="Длительность тура" name="duration" /></div>
+                    <div class="modal-form__input"><input class="input-text input-text_b" placeholder="Количество человек" name="count" /></div>
+                    <div class="modal-form__input"><input class="input-text input-text_b" placeholder="Возраст ребёнка/детей (если актуально)" name="baby" /></div>
                     <div class="modal-form__input"><input class="input-text input-text_b" placeholder="Имя" name="name" /></div>
                     <div class="modal-form__input"><input class="input-text input-text_b phone-input" placeholder="Номер телефона" name="phone" /></div><button class="button button_b" type="submit"><span>Отправить</span></button>
                 </form>
@@ -65,11 +69,11 @@
                 <div class="header__nav">
                     <nav>
                         <ul class="nav">
-                            <li class="nav__item"><a href="">Направления</a></li>
-                            <li class="nav__item"><a href="">Как заказать тур</a></li>
-                            <li class="nav__item"><a href="">Круиз Клуб</a></li>
-                            <li class="nav__item"><a href="">Партнёры</a></li>
-                            <li class="nav__item"><a href="">О нас</a></li>
+                            <li class="nav__item"><a href="" data-scrollto="orient">Направления</a></li>
+                            <li class="nav__item"><a href="" data-scrollto="order">Как заказать тур</a></li>
+                            <li class="nav__item"><a href="" data-scrollto="club">Круиз Клуб</a></li>
+                            <li class="nav__item"><a href="" data-scrollto="partners">Партнёры</a></li>
+                            <li class="nav__item"><a href="" data-scrollto="aboutus">О нас</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -89,7 +93,7 @@
     </section><!-- ==============================================-->
     <!-- С КЕМ ВЫ ПЛАНИРУЕТЕ ОТПРАВИТЬСЯ В ПУТЕШЕСТВИЕ?-->
     <!-- ==============================================-->
-    <section class="container-full">
+    <section class="container-full" id="orient">
         <section class="section">
             <h2 class="section-header wow fadeInUp" data-wow-delay="0.2s">С кем вы планируете отправиться в путешествие?</h2>
             <div class="travel-cats">
@@ -331,12 +335,16 @@
     </section><!-- =====-->
     <!-- ФОРМА-->
     <!-- =====-->
-    <section class="accent">
+    <section class="accent" id="order">
         <div class="container">
             <h2 class="section-header section-header_white wow fadeInUp" data-wow-delay="0.2s">Зачем тратить <br>силы и время на самостоятельный выбор тура?</h2>
             <form class="formfull formfull-1">
                 <div class="formfull__header wow fadeInUp" data-wow-delay="0.3s">Лучше просто укажите пожелания в форме и мы подберем отличный отдых за 20 минут</div>
                 <div class="inputs wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="inputs__item"><input class="input-text" placeholder="Желаемые даты вилета" name="date" /></div>
+                    <div class="inputs__item"><input class="input-text" placeholder="Длительность тура" name="duration" /></div>
+                    <div class="inputs__item"><input class="input-text" placeholder="Количество человек" name="count" /></div>
+                    <div class="inputs__item"><input class="input-text" placeholder="Возраст ребёнка/детей (если актуально)" name="baby" /></div>
                     <div class="inputs__item"><input class="input-text" placeholder="Направление" name="orient" /></div>
                     <div class="inputs__item"><input class="input-text" placeholder="Бюджет" name="price" /></div>
                     <div class="inputs__item"><input class="input-text" placeholder="Имя" name="name" /></div>
@@ -402,7 +410,7 @@
     </section><!-- ================-->
     <!-- ВСТУПАЙТЕ В КЛУБ-->
     <!-- ================-->
-    <section class="section">
+    <section class="section" id="club">
         <div class="container">
             <div class="presnt">
                 <div class="presnt__img wow fadeInLeft" data-wow-delay="0.5s"><img src="img/4112.png" alt="" /></div>
@@ -416,14 +424,14 @@
                             <li class="img-list__item wow fadeInUp" data-wow-delay="1s">зарабатывайте на привлечении новых участников</li>
                         </ul>
                     </div>
-                    <div class="scriptum wow fadeInUp" data-wow-delay="1.2s">Узнайте больше о inCruises - клубе, в котором состоят люди из 170 стран мира</div><a class="button button_b wow fadeInUp" href="" data-modal="modal-tour" data-wow-delay="1.7s"><span>Подробнее</span></a>
+                    <div class="scriptum wow fadeInUp" data-wow-delay="1.2s">Узнайте больше о inCruises - клубе, в котором состоят люди из 170 стран мира</div><a class="button button_c wow fadeInUp" href="" data-modal="modal-tour" data-wow-delay="1.7s"><span>Узнать больше</span></a>
                 </div>
             </div>
         </div>
     </section><!-- ======-->
     <!-- ПАРТНЕРЫ-->
     <!-- ======-->
-    <section class="section section_grey">
+    <section class="section section_grey" id="partners">
         <div class="container">
             <h2 class="section-header wow fadeInUp" data-wow-delay="0.2s">Наши партнеры</h2>
             <div class="brands"><a class="brands__item wow zoomIn" href="" data-wow-delay="0.3s"><img src="img/partners/1.png" alt="" /></a><a class="brands__item wow zoomIn" href="" data-wow-delay="0.4s"><img src="img/partners/2.png" alt="" /></a><a class="brands__item wow zoomIn" href="" data-wow-delay="0.5s"><img src="img/partners/3.png" alt="" /></a><a class="brands__item wow zoomIn" href="" data-wow-delay="0.6s"><img src="img/partners/4.png" alt="" /></a></div>
@@ -431,12 +439,12 @@
     </section><!-- ================-->
     <!-- ПОЧЕМУ ВЫ НЕ НАЙДЕТЕ ДЕШЕВЛЕ-->
     <!-- ================-->
-    <section class="section">
+    <section class="section" id="aboutus">
         <div class="container">
-            <div class="presnt">
-                <div class="presnt__img wow fadeInLeft" data-wow-delay="0.5s"><img src="img/4112.png" alt="" /></div>
+            <div class="presnt presnt_r2">
+                <div class="presnt__img wow fadeInLeft" data-wow-delay="0.5s"><img src="img/324234.png" alt="" /></div>
                 <div class="presnt__art">
-                    <h2 class="article-title article-title_line wow fadeInUp" data-wow-delay="0.2s">Почему вы не найдете дешевле?</h2>
+                    <h2 class="article-title article-title_line wow fadeInUp" data-wow-delay="0.2s">Почему<br> вы не найдете дешевле?</h2>
                     <div class="pickout">
                         <div class="art wow fadeInUp" data-wow-delay="0.3s">Все турагентства работают в одной системе и не имеют возможности поднять цену, установленную туроператором.</div>
                         <div class="art wow fadeInUp" data-wow-delay="0.4s">Поэтому вы можете потратить на поиски 3 дня, но закажете тур по той же цене.</div>
@@ -453,7 +461,7 @@
             <div class="presnt presnt_rev">
                 <div class="presnt__img wow fadeInRight" data-wow-delay="0.5s"><img src="img/4122.png" alt="" /></div>
                 <div class="presnt__art">
-                    <h2 class="article-title article-title_line wow fadeInUp" data-wow-delay="0.2s">Почему вы не найдете дешевле?</h2>
+                    <h2 class="article-title article-title_line wow fadeInUp" data-wow-delay="0.2s">С нами <br>вы в безопасности!</h2>
                     <div class="pickout">
                         <div class="art wow fadeInUp" data-wow-delay="0.3s">Вы заключаете договор с крупным туроператором - Anex Tour, Join Up, TezTour или TUI. Он несет полную ответственность за перелет, медицинскую страховку и ваше пребывание за границей.</div>
                     </div>
@@ -466,10 +474,11 @@
     <!-- ================-->
     <section class="section">
         <div class="container container_rel">
-            <h2 class="section-header wow fadeInUp" data-wow-delay="0.2s">Почему вы не найдете дешевле?С чего начать?</h2>
+            <h2 class="section-header wow fadeInUp" data-wow-delay="0.2s">С чего начать?</h2>
             <div class="steps">
                 <div class="steps__map"></div>
-                <div class="steps__item wow zoomIn" data-wow-delay="0.3s">Почему вы не найдете дешевле?<div class="steps__img"><img src="img/icons/map.svg" alt="" /></div>
+                <div class="steps__item wow zoomIn" data-wow-delay="0.3s">
+                    <div class="steps__img"><img src="img/icons/map.svg" alt="" /></div>
                     <div class="steps__name">Заполните форму</div>
                     <div class="steps__comment">Мы перезвоним, чтобы уточнить детали и в течение дня подберем 3-5 вариантов</div>
                 </div>
@@ -505,10 +514,14 @@
     <!-- =====-->
     <section class="accent">
         <div class="container">
-            <h2 class="section-header section-header_white wow fadeInUp" data-wow-delay="0.2s">Зачем тратить <br>силы и время на самостоятельный выбор тура?</h2>
+            <h2 class="section-header section-header_white wow fadeInUp" data-wow-delay="0.2s">Заполните форму <br>и посмотрите, что вы можете получить</h2>
             <form class="formfull formfull-2">
-                <div class="formfull__header wow fadeInUp" data-wow-delay="0.3s">Лучше просто укажите пожелания в форме и мы подберем отличный отдых за 20 минут</div>
+                <div class="formfull__header wow fadeInUp" data-wow-delay="0.3s">Если Вы сейчас не собираетесь лететь - позвольте себе помечтать и определить для себя отпуск своей мечты</div>
                 <div class="inputs wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="inputs__item"><input class="input-text" placeholder="Желаемые даты вилета" name="date" /></div>
+                    <div class="inputs__item"><input class="input-text" placeholder="Длительность тура" name="duration" /></div>
+                    <div class="inputs__item"><input class="input-text" placeholder="Количество человек" name="count" /></div>
+                    <div class="inputs__item"><input class="input-text" placeholder="Возраст ребёнка/детей (если актуально)" name="baby" /></div>
                     <div class="inputs__item"><input class="input-text" placeholder="Направление" name="orient" /></div>
                     <div class="inputs__item"><input class="input-text" placeholder="Бюджет" name="price" /></div>
                     <div class="inputs__item"><input class="input-text" placeholder="Имя" name="name" /></div>

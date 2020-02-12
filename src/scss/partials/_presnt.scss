@@ -57,9 +57,19 @@
   .presnt__art {
     order: 1;
     padding-right: 127px;
-    padding-left: 0;
+    padding-left: 88px;
     @include media-breakpoint-down(md) {
       order: 2;
+      padding-right: 0;
+      padding-left: 0q;
+    }
+  }
+}
+
+.presnt_r2 {
+  .presnt__art {
+    padding-right: 71px;
+    @include media-breakpoint-down(md) {
       padding-right: 0;
     }
   }

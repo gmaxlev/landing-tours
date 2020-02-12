@@ -1,15 +1,19 @@
 .inputs {
   display: flex;
   flex-wrap: wrap;
+
+  margin-right: -30px;
   @include media-breakpoint-down(sm) {
     margin-bottom: -15px;
+    margin-right: 0;
   }
 }
 
 .inputs__item {
   margin-right: 30px;
-  width: calc(25% - 23px);
+  width: calc(25% - 30px);
   position: relative;
+  margin-bottom: 20px;
   .valerror {
     position: absolute;
     font-size: 0.7rem;

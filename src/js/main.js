@@ -205,6 +205,18 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
               .val(),
             phone: $(form)
               .find('input[name ="phone"]')
+              .val(),
+            date: $(form)
+              .find('input[name ="date"]')
+              .val(),
+            duration: $(form)
+              .find('input[name ="duration"]')
+              .val(),
+            count: $(form)
+              .find('input[name ="count"]')
+              .val(),
+            baby: $(form)
+              .find('input[name ="baby"]')
               .val()
           },
           success: function() {
@@ -353,6 +365,18 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
               .val(),
             price: $(form)
               .find('input[name ="price"]')
+              .val(),
+            date: $(form)
+              .find('input[name ="date"]')
+              .val(),
+            duration: $(form)
+              .find('input[name ="duration"]')
+              .val(),
+            count: $(form)
+              .find('input[name ="count"]')
+              .val(),
+            baby: $(form)
+              .find('input[name ="baby"]')
               .val()
           },
           success: function() {
@@ -428,6 +452,18 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
               .val(),
             price: $(form)
               .find('input[name ="price"]')
+              .val(),
+            date: $(form)
+              .find('input[name ="date"]')
+              .val(),
+            duration: $(form)
+              .find('input[name ="duration"]')
+              .val(),
+            count: $(form)
+              .find('input[name ="count"]')
+              .val(),
+            baby: $(form)
+              .find('input[name ="baby"]')
               .val()
           },
           success: function() {
@@ -453,73 +489,15 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
 })();
 
 (function() {
-  $(".formfull-2")
-    .submit(function(e) {
-      e.preventDefault();
-    })
-    .validate({
-      rules: {
-        name: {
-          required: {
-            depends: function() {
-              $(this).val($.trim($(this).val()));
-              return true;
-            }
-          }
-        },
-        phone: {
-          required: {
-            depends: function() {
-              $(this).val($.trim($(this).val()));
-              return true;
-            }
-          },
-          minlength: 19
-        }
+  $("[data-scrollto]").on("click", function(e) {
+    e.preventDefault();
+    var id = $(this).attr("data-scrollto");
+    $([document.documentElement, document.body]).animate(
+      {
+        scrollTop:
+          $("#" + id).offset().top - $(".header-container").outerHeight()
       },
-
-      success: function(label, element) {
-        $(element)
-          .parent()
-          .find(".valerror")
-          .remove();
-        return true;
-      },
-      errorPlacement: showError,
-      submitHandler: function(form) {
-        $.ajax({
-          url: "send.php",
-          type: "POST",
-          data: {
-            name: $(form)
-              .find(".name")
-              .val(),
-            phone: $(form)
-              .find(".phone-input")
-              .val(),
-            question: $(form)
-              .find(".question")
-              .val(),
-            formname: "calc"
-          },
-          success: function() {
-            $(form)
-              .siblings(".formcomplete_ok")
-              .slideDown(500);
-          },
-          error: function() {
-            $(form)
-              .siblings(".formcomplete_error")
-              .slideDown(500);
-          }
-        });
-        $(form)
-          .find(".input-text, .textarea")
-          .prop("disabled", true)
-          .val("");
-        $(form)
-          .find(".button")
-          .prop("disabled", true);
-      }
-    });
+      2000
+    );
+  });
 })();

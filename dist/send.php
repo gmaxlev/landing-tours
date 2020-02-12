@@ -16,16 +16,28 @@
     if ($_POST['form']=='simple'
         && isset($_POST['name'])
         && isset($_POST['phone'])
+        && isset($_POST['date'])
+        && isset($_POST['duration'])
+        && isset($_POST['count'])
+        && isset($_POST['baby'])
     ) {
         
   
         $form_name = htmlspecialchars(trim($_POST['name']));
         $form_phone = htmlspecialchars(trim($_POST['phone']));
+        $form_date = htmlspecialchars(trim($_POST['date']));
+        $form_duration = htmlspecialchars(trim($_POST['duration']));
+        $form_count = htmlspecialchars(trim($_POST['count']));
+        $form_baby = htmlspecialchars(trim($_POST['baby']));
 
         $text_message = "
 
             Имя: ".$form_name ." <br>
             Номер телефона: ".$form_phone." <br>
+            Желаемые даты вылета: ".$form_phone." <br>
+            Длительность тура: ".$form_phone." <br>
+            Количество человек: ".$form_phone." <br>
+            Возраст ребёнка/детей (если актуально): ".$form_phone." <br>
         ";
     }
 
@@ -53,6 +65,10 @@
         && isset($_POST['phone'])
         && isset($_POST['orient'])
         && isset($_POST['price'])
+        && isset($_POST['date'])
+        && isset($_POST['duration'])
+        && isset($_POST['count'])
+        && isset($_POST['baby'])
     ) {
         
   
@@ -60,6 +76,10 @@
         $form_phone = htmlspecialchars(trim($_POST['phone']));
         $form_prient = htmlspecialchars(trim($_POST['orient']));
         $form_price = htmlspecialchars(trim($_POST['price']));
+        $form_date = htmlspecialchars(trim($_POST['date']));
+        $form_duration = htmlspecialchars(trim($_POST['duration']));
+        $form_count = htmlspecialchars(trim($_POST['count']));
+        $form_baby = htmlspecialchars(trim($_POST['baby']));
 
         $text_message = "
 
@@ -67,6 +87,10 @@
             Номер телефона: ".$form_phone." <br>
             Направление: ".$form_prient." <br>
             Бюджет: ".$form_price." <br>
+            Желаемые даты вылета: ".$form_phone." <br>
+            Длительность тура: ".$form_phone." <br>
+            Количество человек: ".$form_phone." <br>
+            Возраст ребёнка/детей (если актуально): ".$form_phone." <br>
         ";
     }
 
@@ -77,6 +101,8 @@
 
     $email_to = implode(',', $recipients);
 
-    $retval = mail ($email_to,$subject,$text_message,$header); 
+    $retval = mail ($email_to,$subject,$text_message,$header);
+    
+    var_dump($retval);
 
 ?>
