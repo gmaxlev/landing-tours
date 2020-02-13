@@ -28,6 +28,13 @@
   margin-bottom: 30px;
 }
 
+.new_f-ext-container .ui-slider-range, .new_f-ext-container .slider-container .ui-widget-content, .new_f-container {
+
+  background: -webkit-linear-gradient(320deg,#96ddd7 0,#80a3be 85%,#80a3be 100%)!important;
+  background: linear-gradient(130deg,#96ddd7 0,#80a3be 85%,#80a3be 100%)!important;
+ 
+}
+
 @media (hover: none) and (pointer: coarse) {
   .intro-bg__video video {
     display: block;
