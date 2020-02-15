@@ -1,9 +1,19 @@
 @charset "UTF-8";
 
+.intro__act .button_a, .intro__act .button_c {min-width: 300px; margin: 0 10px}
+.intro__act .button_c {padding: 19px}
+.intro__act .button_c::after {
+  box-shadow: 0 0 15px 5px #999;
+}
+.button_c::after {box-shadow: 0 0 15px 5px #cedbe6;}
+
 .auth-rest__list {
   color: #443f40;
   font-size: 0.9375rem;
   line-height: 1.5rem;
+}
+.auth-rest__act .button {
+  max-width: 250px;
 }
 
 #modal-excursion .modal__window {
@@ -35,6 +45,15 @@
  
 }
 
+.address {font-size: 12px;
+  line-height: 1.5;}
+
+.modal__window {
+  padding: 40px;
+}
+
+.modal-form__header {color: #79ccd0}
+
 @media (hover: none) and (pointer: coarse) {
   .intro-bg__video video {
     display: block;
@@ -43,4 +62,25 @@
 
 .brands-container {
   position: relative;
+}
+
+@media only screen and (max-width: 576px){
+  .intro__act .button_a, .intro__act .button_c {margin: 0 auto; display: block}
+  .intro__act .button_a {margin-top: 20px}
+
+  .foot-contacts  .foot-contacts__item:first-child {
+    align-items: start;}
+    .presnt__art a:nth-child(6) {margin-top: 180px;  
+     }
+      #club .container {position: relative}
+      #club .container::before {
+        position: absolute;
+        bottom: 40px;
+        left: 0;
+        width: 100%;
+        height: 210px;
+        background: url(../img/liner.png) right;
+        background-size: cover;
+        content: "";
+    }
 }
