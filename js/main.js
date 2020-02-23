@@ -1,6 +1,46 @@
 new WOW().init();
 
 /* 
+  Контрольные точки
+*/
+var breakpoints = {
+  xs: 0,
+  sm: 576,
+  md: 768,
+  lg: 992,
+  xl: 1200,
+  xxl: 1920
+};
+
+/**
+ * Плавная прокрутка к элементу
+ * @param {string} id Идентификатор
+ */
+function scrollToElement(id) {
+  $([document.documentElement, document.body]).animate(
+    {
+      scrollTop: $("#" + id).offset().top - $(".header-container").outerHeight()
+    },
+    1500
+  );
+}
+
+(function () {
+  $(".header__menu").on("click", function (e) {
+    e.preventDefault();
+    $(".mobmenu").fadeIn();
+  });
+  $(".mobmenu__close").on("click", function (e) {
+    e.preventDefault();
+    $(".mobmenu").fadeOut();
+  });
+  $(".mobmenu__item > a").on("click", function (e) {
+    e.preventDefault();
+    $(".mobmenu").fadeOut();
+  });
+})();
+
+/* 
   Миминамальная длина для номера телефона
 */
 var minPhoneLength = 10;
@@ -36,7 +76,7 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
 /* 
   Стилизация шапки при прокрутке
 */
-(function() {
+(function () {
   function headerToScroll() {
     if ($(window).scrollTop() > 100) {
       $(".header-container").addClass("header-container_scroll");
@@ -51,13 +91,13 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
 /* 
   Слайдер "Отзывы"
 */
-(function() {
+(function () {
   $(".reviews__slider").slick({
     infinite: true,
     slidesToShow: 4,
     slidesToScroll: 4,
     dots: true,
-    customPaging: function(slick, index) {
+    customPaging: function (slick, index) {
       return "<div class='slide-pagin'></div>";
     },
     prevArrow: $(".slider-arrow-reviews > .slider-arrow_prev"),
@@ -86,7 +126,7 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
     dots: true,
     prevArrow: $(".slider-arrow-partners > .slider-arrow_prev"),
     nextArrow: $(".slider-arrow-partners > .slider-arrow_next"),
-    customPaging: function(slick, index) {
+    customPaging: function (slick, index) {
       return "<div class='slide-pagin'></div>";
     },
     responsive: [
@@ -108,44 +148,59 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
   });
 })();
 
+var windowIsOpen = false;
+
+setTimeout(function () {
+  openModalWindow("modal-subscribe");
+}, 3000);
+
 /* 
   Модальные окна
 */
-(function() {
+(function () {
   function openModalWindow(id) {
+    if (windowIsOpen) return;
+    windowIsOpen = true;
     var modal = $("#" + id);
     var dark = $(modal).find(".modal__dark");
     var win = $(modal).find(".modal__window");
     $(modal).show();
     $(dark).fadeIn(300);
     $(win).fadeIn(500);
+    $('html').css('overflow', 'hidden');
   }
-
-  $(".modal__close, .modal__dark").on("click", function() {
+  window.openModalWindow = openModalWindow;
+  $(".modal__close, .modal__dark").on("click", function () {
+    windowIsOpen = false;
     var modal = $(this).closest(".modal");
     var dark = $(modal).find(".modal__dark");
     var win = $(modal).find(".modal__window");
     $(dark).fadeOut(300);
     $(win).fadeOut(500);
-    setTimeout(function() {
+    setTimeout(function () {
       $(modal).hide();
+      $('html').css('overflow', 'auto');
     }, 500);
   });
 
-  $("[data-modal]").on("click", function(e) {
+  $("[data-modal]").on("click", function (e) {
     e.preventDefault();
     var id = $(this).attr("data-modal");
     openModalWindow(id);
   });
 })();
 
+
+
+
+
 /* 
   Типы отдыхов
 */
-(function() {
+(function () {
   var select = false;
   var anim = false;
-  $(".travel-cats__item").on("click", function(e) {
+  $(".travel-cats__item").on("click", function (e) {
     e.preventDefault();
     if (anim) return;
     var index = $(this).index();
@@ -157,17 +212,23 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
         .fadeIn(500)
         .addClass("active");
       select = index;
-      setTimeout(function() {
+      setTimeout(function () {
         anim = false;
+        if (window.innerWidth > breakpoints["sm"]) {
+          scrollToElement("travels");
+        }
       }, 500);
     } else {
+      if (window.innerWidth > breakpoints["sm"]) {
+        scrollToElement("travels");
+      }
       anim = true;
       select = index;
       $(".travels")
         .find(".active")
         .removeClass("active")
         .fadeOut(500);
-      setTimeout(function() {
+      setTimeout(function () {
         $(".travels > div:eq(" + index + ")")
           .fadeIn(500)
           .addClass("active");
@@ -176,7 +237,7 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
     }
   });
 
-  $(".travelto").on("click", function(e) {
+  $(".travelto").on("click", function (e) {
     e.preventDefault();
     $(this)
       .closest(".travel-cats__item")
@@ -185,101 +246,112 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
   });
 })();
 
-(function() {
+(function () {
   /* 
     Окно "Подобрать тур"
   */
-  $(".form-modal-1")
-    .submit(function(e) {
-      e.preventDefault();
-    })
-    .validate({
-      rules: {
-        name: {
-          required: {
-            depends: function() {
-              $(this).val($.trim($(this).val()));
-              return true;
+
+  $(".form-modal-1").each(function () {
+    $(this)
+      .submit(function (e) {
+        e.preventDefault();
+      })
+      .validate({
+        rules: {
+          name: {
+            required: {
+              depends: function () {
+                $(this).val($.trim($(this).val()));
+                return true;
+              }
             }
+          },
+          phone: {
+            required: {
+              depends: function () {
+                $(this).val($.trim($(this).val()));
+                return true;
+              }
+            },
+            minlength: minPhoneLength
           }
         },
-        phone: {
-          required: {
-            depends: function() {
-              $(this).val($.trim($(this).val()));
-              return true;
-            }
-          },
-          minlength: minPhoneLength
-        }
-      },
 
-      success: function(label, element) {
-        $(element)
-          .parent()
-          .find(".valerror")
-          .remove();
-        return true;
-      },
-      errorPlacement: showError,
-      submitHandler: function(form) {
-        $.ajax({
-          url: "send.php",
-          type: "POST",
-          data: {
-            form: "simple",
-            name: $(form)
-              .find('input[name ="name"]')
-              .val(),
-            phone: $(form)
-              .find('input[name ="phone"]')
-              .val(),
-            date: $(form)
-              .find('input[name ="date"]')
-              .val(),
-            duration: $(form)
-              .find('input[name ="duration"]')
-              .val(),
-            count: $(form)
-              .find('input[name ="count"]')
-              .val(),
-            baby: $(form)
-              .find('input[name ="baby"]')
-              .val()
-          },
-          success: function() {
-            $(form)
-              .siblings(".formcomplete_ok")
-              .slideDown(500);
-          },
-          error: function() {
-            $(form)
-              .siblings(".formcomplete_error")
-              .slideDown(500);
-          }
-        });
-        $(form)
-          .find(".input-text, .textarea")
-          .prop("disabled", true)
-          .val("");
-        $(form)
-          .find(".button")
-          .prop("disabled", true);
-      }
-    });
+        success: function (label, element) {
+          $(element)
+            .parent()
+            .find(".valerror")
+            .remove();
+          return true;
+        },
+        errorPlacement: showError,
+        submitHandler: function (form) {
+          $.ajax({
+            url: "send.php",
+            type: "POST",
+            data: {
+              form: "simple",
+              name: $(form)
+                .find('input[name ="name"]')
+                .val(),
+              phone: $(form)
+                .find('input[name ="phone"]')
+                .val(),
+              date: $(form)
+                .find('input[name ="date"]')
+                .val(),
+              duration: $(form)
+                .find('select[name ="duration"]')
+                .val(),
+              count: $(form)
+                .find('input[name ="count"]')
+                .val(),
+              baby: $(form)
+                .find('input[name ="baby"]')
+                .val(),
+              orient: $(form)
+                .find('input[name ="orient"]')
+                .val(),
+              price: $(form)
+                .find('select[name ="price"]')
+                .val()
+            },
+            success: function () {
+              $(form)
+                .siblings(".formcomplete_ok")
+                .slideDown(500);
+              ga("send", "event", "tour", "get");
+              fbq("track", "Lead");
+            },
+            error: function () {
+              $(form)
+                .siblings(".formcomplete_error")
+                .slideDown(500);
+            }
+          });
+          $(form)
+            .find(".input-text, .textarea")
+            .prop("disabled", true)
+            .val("");
+          $(form)
+            .find(".button")
+            .prop("disabled", true);
+        }
+      });
+  });
 
   /* 
     Окно "Задать вопрос"
   */
   $(".form-modal-2")
-    .submit(function(e) {
+    .submit(function (e) {
       e.preventDefault();
     })
     .validate({
       rules: {
         name: {
           required: {
-            depends: function() {
+            depends: function () {
               $(this).val($.trim($(this).val()));
               return true;
             }
@@ -287,7 +359,7 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
         },
         phone: {
           required: {
-            depends: function() {
+            depends: function () {
               $(this).val($.trim($(this).val()));
               return true;
             }
@@ -296,7 +368,7 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
         }
       },
 
-      success: function(label, element) {
+      success: function (label, element) {
         $(element)
           .parent()
           .find(".valerror")
@@ -304,7 +376,7 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
         return true;
       },
       errorPlacement: showError,
-      submitHandler: function(form) {
+      submitHandler: function (form) {
         $.ajax({
           url: "send.php",
           type: "POST",
@@ -320,12 +392,14 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
               .find('textarea[name ="message"]')
               .val()
           },
-          success: function() {
+          success: function () {
             $(form)
               .siblings(".formcomplete_ok")
               .slideDown(500);
+            ga("send", "event", "question", "get");
+            fbq("track", "Lead");
           },
-          error: function() {
+          error: function () {
             $(form)
               .siblings(".formcomplete_error")
               .slideDown(500);
@@ -343,108 +417,10 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
 })();
 
 /* 
-  Формы на странице
-*/
-(function() {
-  validate = {
-    rules: {
-      name: {
-        required: {
-          depends: function() {
-            $(this).val($.trim($(this).val()));
-            return true;
-          }
-        }
-      },
-      phone: {
-        required: {
-          depends: function() {
-            $(this).val($.trim($(this).val()));
-            return true;
-          }
-        },
-        minlength: minPhoneLength
-      }
-    },
-
-    success: function(label, element) {
-      $(element)
-        .parent()
-        .find(".valerror")
-        .remove();
-      return true;
-    },
-    errorPlacement: showError,
-    submitHandler: function(form) {
-      $.ajax({
-        url: "send.php",
-        type: "POST",
-        data: {
-          form: "landing",
-          name: $(form)
-            .find('input[name ="name"]')
-            .val(),
-          phone: $(form)
-            .find('input[name ="phone"]')
-            .val(),
-          orient: $(form)
-            .find('input[name ="orient"]')
-            .val(),
-          price: $(form)
-            .find('input[name ="price"]')
-            .val(),
-          date: $(form)
-            .find('input[name ="date"]')
-            .val(),
-          duration: $(form)
-            .find('input[name ="duration"]')
-            .val(),
-          count: $(form)
-            .find('input[name ="count"]')
-            .val(),
-          baby: $(form)
-            .find('input[name ="baby"]')
-            .val()
-        },
-        success: function() {
-          $(form)
-            .siblings(".formcomplete_ok")
-            .slideDown(500);
-        },
-        error: function() {
-          $(form)
-            .siblings(".formcomplete_error")
-            .slideDown(500);
-        }
-      });
-      $(form)
-        .find(".input-text, .textarea")
-        .prop("disabled", true)
-        .val("");
-      $(form)
-        .find(".button")
-        .prop("disabled", true);
-    }
-  };
-
-  $(".formfull-1")
-    .submit(function(e) {
-      e.preventDefault();
-    })
-    .validate(validate);
-
-  $(".formfull-2")
-    .submit(function(e) {
-      e.preventDefault();
-    })
-    .validate(validate);
-})();
-
-/* 
   Плавная прокрутка от элемента [data-scrollto="id"] к id
 */
-(function() {
-  $("[data-scrollto]").on("click", function(e) {
+(function () {
+  $("[data-scrollto]").on("click", function (e) {
     e.preventDefault();
     var id = $(this).attr("data-scrollto");
     $([document.documentElement, document.body]).animate(
@@ -456,3 +432,17 @@ $(".phone-input").mask("+38 (000) 000 00 00", {
     );
   });
 })();
+
+
+$(function () {
+  $('.input-date').daterangepicker({
+    singleDatePicker: true,
+    locale: {
+      format: 'DD.MM.YYYY'
+    }
+  });
+
+
+  $('input[name="date"]').val('');
+  $('input[name="date"]').attr("placeholder", "Желаемая дата вылета");
+});

@@ -88,13 +88,13 @@
             <li class="mobmenu__item">
                     <a href="" data-scrollto="search">Выбрать тур</a>
                 </li>
-            <li class="mobmenu__item none">
+            <li class="mobmenu__item">
                 <a href="" data-scrollto="club">Круиз Клуб</a>
             </li>
             <li class="mobmenu__item">
                 <a href="" data-scrollto="aboutus">О нас</a>
             </li>
-            <li class="mobmenu__item none">
+            <li class="mobmenu__item">
                 <a href="" data-scrollto="hottours">Горящие туры</a>
             </li>
         </ul>
@@ -186,30 +186,14 @@
             <div class="modal__dark"></div>
             <div class="modal__window">
                 <div class="modal__close"></div>
-                <div class="modal-form">
-                    <div class="modal-form__header">Сэкономьте время</div>
-                    <div class="modal-form__comment">Просто оставьте свои пожелания, мы подберем несколько лучших вариантов и предложим их вам</div>
-                    <form class="form-modal-1">
-                        <div class="modal-form__input"><input  class="input-text input-text_b"  id="date" name="date" placeholder="Желаемые даты вылета" /></div>
-                        <div class="modal-form__input"><input class="input-text input-text_b" placeholder="Страна, направление" name="orient" /></div>
-                        <div class="modal-form__input"><select class="input-text input-text_b" name="price">
-                                <option selected value="до 500$">до 500$</option>
-                                <option value="от 500 до 1500$">от 500 до 1500$</option>
-                                <option value="от 1500$">от 1500$</option>
-                               </select></div>
-                               <div class="modal-form__input"><select class="input-text input-text_b" name="duration">
-                                    <option selected value="6-8 ночей">6-8 ночей</option>
-                                    <option value="8-12 ночей">8-12 ночей</option>
-                                    <option value="от 12 ночей">от 12 ночей</option>
-                                   </select></div>
-                        <div class="modal-form__input"><input class="input-text input-text_b" placeholder="Количество человек" name="count" /></div>
-                        <div class="modal-form__input"><input class="input-text input-text_b" placeholder="Возраст ребёнка/детей (если актуально)" name="baby" /></div>
-                        <div class="modal-form__input"><input class="input-text input-text_b" placeholder="Имя" name="name" required /></div>
-                        <div class="modal-form__input"><input class="input-text input-text_b phone-input viber" placeholder="Номер телефона" name="phone" required /></div><button class="button button_b" type="submit"><span>Отправить</span></button>
-                    </form>
-                    <div class="formcomplete formcomplete_modal formcomplete_ok">Спасибо! Мы вам перезвоним.</div>
-                    <div class="formcomplete formcomplete_modal formcomplete_error">Ошибка.</div>
-                </div>
+                <div class="social">
+                        <div class="social__list"><a href="https://invite.viber.com/?g2=AQANtnG0SliapEgtAcO6w8n9xOzsQ5m0p8HPf5Po91nAlX71ocAJpYeUf7i9Knxa"><img src="img/icons/viber.svg" alt="" /></a>
+                            <a href="https://www.instagram.com/yuliya_kostevych/?igshid=bain706q2bkg"><img src="img/icons/instagram.svg" alt="" /></a></div>
+                       
+                    </div>
+                    <div class="modal-form__header impression">Будьте в курсе всех впечатлений</div>
+                    <div class="modal-form__header frame">Подпишитесь на нас в viber и instagram</div>
+
             </div>
         </div><!-- ======-->
     <!-- HEADER-->
@@ -223,9 +207,9 @@
                         <ul class="nav">
                             <li class="nav__item"><a href="" data-scrollto="orient">Направления</a></li>
                             <li class="nav__item"><a href="" data-scrollto="order">Как заказать тур</a></li>
-                            <li class="nav__item none"><a href="" data-scrollto="club">Круиз Клуб</a></li>
+                            <li class="nav__item"><a href="" data-scrollto="club">Круиз Клуб</a></li>
                             <li class="nav__item"><a href="" data-scrollto="aboutus">О нас</a></li>
-                            <li class="nav__item none"><a href="" data-scrollto="hottours">Горящие туры</a></li>
+                            <li class="nav__item"><a href="" data-scrollto="hottours">Горящие туры</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -246,26 +230,8 @@
             <div class="intro-bg__video"><video autoplay="autoplay" muted="muted" loop="loop">
                     <source src="videos/Depositphotos_206666512_hd1080.mp4" type="video/mp4" /></video></div>
         </div>
-        <h1 class="intro__header wow fadeInUp" data-wow-delay="0.2s"> 
-            <?php
-            $title = $_GET['utm_content']; 
-            if($title == 'allinclusive') {$title_text = 'Подбор туров "все включено"';}
-            elseif($title == 'hotabroad') {$title_text = 'Подбор горящих туров за границу';}
-            elseif($title == 'hot') {$title_text = 'Подбор горящих туров';}
-            elseif($title == 'married') {$title_text = 'Подбор туров для молодоженов';}
-            elseif($title == 'couple') {$title_text = 'Подбор туров для пар';}
-            elseif($title == 'carpathians') {$title_text = 'Подбор туров в Карпаты';}
-            elseif($title == 'online') {$title_text = 'Подбор туров онлайн';}
-            elseif($title == 'choose') {$title_text = 'Профессиональный подбор туров';}
-            elseif($title == 'search') {$title_text = 'Профессиональный поиск туров';}
-            elseif($title == 'family') {$title_text = 'Подбор туров для семейного отдыха';}
-            elseif($title == 'baby') {$title_text = 'Подбор туров для отдыха с младенцем';}
-            elseif($title == 'blackazov') {$title_text = 'Подбор туров на Черное и Азовское море';}
-            else{$title_text = 'Организуем культурный отдых <br>на любой вкус';}
-            echo $title_text;
-            ?> 
-        </h1>
-        <div class="intro__act wow fadeInUp" data-wow-delay="0.6s"><a class="button button_c none" href="" data-scrollto="search"><span> Выбрать самому</span></a>
+        <h1 class="intro__header wow fadeInUp" data-wow-delay="0.2s">Организуем культурный отдых<br>на любой вкус</h1>
+        <div class="intro__act wow fadeInUp" data-wow-delay="0.6s"><a class="button button_c" href="" data-scrollto="search"><span> Выбрать самому</span></a>
             <a class="button button_a" href="" data-modal="modal-tour"><span> Получить подборку</span></a></div>
     </section><!-- ==============================================-->
     <!-- С КЕМ ВЫ ПЛАНИРУЕТЕ ОТПРАВИТЬСЯ В ПУТЕШЕСТВИЕ?-->
@@ -295,7 +261,7 @@
                                     </ul>
                               <p> Если Вы человек любознательный и нацеленый на что-то качественно новое - этот вид отдыха для Вас!</div>
                                 <div class="scriptum">Не определились куда отправится? Посмотрите экскурсионные туры и визуализируйте путишествие, а мы возьмём на себя хлопоты с документами и бронированием!</p></div>
-                                <div class="auth-rest__act"><a class="button button_b" href="" data-modal="modal-tour"><span>Подобрать тур</span></a></div>
+                                <div class="auth-rest__act"><a class="button button_b" href="" data-modal="modal-excursion"><span>Экскурсионные туры</span></a></div>
                             </div>
                         </div>
                     </div>
@@ -423,7 +389,7 @@
                             </div>
                             <div class="scriptum">Если Вы человек любознательный и нацеленый на что-то качественно новое - этот вид отдыха для Вас!</div>
                             <div class="auth-rest__list"> Не определились куда отправится? Посмотрите экскурсионные туры и визуализируйте путишествие, а мы возьмём на себя хлопоты с документами и бронированием!</div>
-                                <div class="auth-rest__act"><a class="button button_b" href="" data-modal="modal-tour"><span>Экскурсионные туры</span></a></div>
+                                <div class="auth-rest__act"><a class="button button_b" href="" data-modal="modal-excursion"><span>Экскурсионные туры</span></a></div>
                         </div>
                     </div>
                 </div>
@@ -503,7 +469,7 @@
     </section><!-- =====-->
     <!-- ФОРМА-->
     <!-- =====-->
-    <section class="section monitor none" id="search">
+    <section class="section monitor" id="search">
             <div class="container container_rel">
                 <h2 class="section-header wow fadeInUp" data-wow-delay="0.2s">Любите мониторить туры самостоятельно?</h2>
                 <div class="advice">
@@ -588,7 +554,7 @@
     </section><!-- ================-->
     <!-- ВСТУПАЙТЕ В КЛУБ-->
     <!-- ================-->
-    <section class="section none" id="club">
+    <section class="section" id="club">
         <div class="container">
             <div class="presnt">
                 <div class="presnt__img wow fadeInLeft" data-wow-delay="0.5s"><img src="img/4112.png" alt="" /></div>
@@ -704,7 +670,7 @@
     </section><!-- =====-->
     <!-- ФОРМА-->
     <!-- =====-->
-    <section class="section monitor none" id="hottours">
+    <section class="section monitor" id="hottours">
             <div class="container container_rel">
                 <h2 class="section-header wow fadeInUp" data-wow-delay="0.2s">Любите горящие туры?</h2>
                 <div class="advice">

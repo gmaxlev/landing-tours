@@ -112,7 +112,7 @@
                 <div class="modal-form__header">Мы сделаем все сами</div>
                 <div class="modal-form__comment">Просто оставьте свои пожелания, мы подберем несколько лучших вариантов и предложим их вам</div>
                 <form class="form-modal-1">
-                    <div class="modal-form__input"><input  class="input-text input-text_b"  id="date" name="date" placeholder="Желаемые даты вылета" /></div>
+                    <div class="modal-form__input"><input  class="input-text input-text_b input-date"   name="date" placeholder="Желаемые даты вылета" /></div>
                     <div class="modal-form__input"><input class="input-text input-text_b" placeholder="Страна, направление" name="orient" /></div>
                     <div class="modal-form__input"><select class="input-text input-text_b" name="price">
                             <option selected value="до 500$">до 500$</option>
@@ -126,8 +126,9 @@
                                </select></div>
                     <div class="modal-form__input"><input class="input-text input-text_b" placeholder="Количество человек" name="count" /></div>
                     <div class="modal-form__input"><input class="input-text input-text_b" placeholder="Возраст ребёнка/детей (если актуально)" name="baby" /></div>
-                    <div class="modal-form__input"><input class="input-text input-text_b" placeholder="Имя" name="name" required /></div>
-                    <div class="modal-form__input"><input class="input-text input-text_b phone-input viber" placeholder="Номер телефона" name="phone" required /></div><button class="button button_b" type="submit"><span>Отправить</span></button>
+                    <div class="modal-form__input required"><input class="input-text input-text_b" placeholder="Имя" name="name" required /></div>
+                    <div class="modal-form__input required"><input class="input-text input-text_b phone-input viber" placeholder="Номер телефона" name="phone" required /></div>
+                    <button class="button button_b" type="submit"><span>Отправить</span></button>
                 </form>
                 <div class="formcomplete formcomplete_modal formcomplete_ok">Спасибо! Мы вам перезвоним.</div>
                 <div class="formcomplete formcomplete_modal formcomplete_error">Ошибка.</div>
@@ -167,7 +168,7 @@
         <div class="modal__window">
             <div class="modal__close"></div>
             <div class="modal-form">
-                <div class="modal-form__header">Подобрать тур</div>
+                <div class="modal-form__header">Что вас интересует?</div>
                 <div class="modal-form__comment">Введите имя, номер телефона и мы вам перезвоним.</div>
                 <form class="form-modal-2">
                     <div class="modal-form__input"><input class="input-text input-text_b" placeholder="Имя" name="name" /></div>
@@ -190,7 +191,7 @@
                     <div class="modal-form__header">Сэкономьте время</div>
                     <div class="modal-form__comment">Просто оставьте свои пожелания, мы подберем несколько лучших вариантов и предложим их вам</div>
                     <form class="form-modal-1">
-                        <div class="modal-form__input"><input  class="input-text input-text_b"  id="date" name="date" placeholder="Желаемые даты вылета" /></div>
+                        <div class="modal-form__input"><input  class="input-text input-text_b input-date"   name="date" placeholder="Желаемые даты вылета" /></div>
                         <div class="modal-form__input"><input class="input-text input-text_b" placeholder="Страна, направление" name="orient" /></div>
                         <div class="modal-form__input"><select class="input-text input-text_b" name="price">
                                 <option selected value="до 500$">до 500$</option>
@@ -204,8 +205,8 @@
                                    </select></div>
                         <div class="modal-form__input"><input class="input-text input-text_b" placeholder="Количество человек" name="count" /></div>
                         <div class="modal-form__input"><input class="input-text input-text_b" placeholder="Возраст ребёнка/детей (если актуально)" name="baby" /></div>
-                        <div class="modal-form__input"><input class="input-text input-text_b" placeholder="Имя" name="name" required /></div>
-                        <div class="modal-form__input"><input class="input-text input-text_b phone-input viber" placeholder="Номер телефона" name="phone" required /></div><button class="button button_b" type="submit"><span>Отправить</span></button>
+                        <div class="modal-form__input required"><input class="input-text input-text_b" placeholder="Имя" name="name" required /></div>
+                        <div class="modal-form__input required"><input class="input-text input-text_b phone-input viber" placeholder="Номер телефона" name="phone" required /></div><button class="button button_b" type="submit"><span>Отправить</span></button>
                     </form>
                     <div class="formcomplete formcomplete_modal formcomplete_ok">Спасибо! Мы вам перезвоним.</div>
                     <div class="formcomplete formcomplete_modal formcomplete_error">Ошибка.</div>
@@ -294,7 +295,7 @@
                                         <li class="list-dots__item">йога/аюрведа программы</li>
                                     </ul>
                               <p> Если Вы человек любознательный и нацеленый на что-то качественно новое - этот вид отдыха для Вас!</div>
-                                <div class="scriptum">Не определились куда отправится? Посмотрите экскурсионные туры и визуализируйте путишествие, а мы возьмём на себя хлопоты с документами и бронированием!</p></div>
+                                <div class="scriptum none">Не определились куда отправится? Посмотрите экскурсионные туры и визуализируйте путишествие, а мы возьмём на себя хлопоты с документами и бронированием!</p></div>
                                 <div class="auth-rest__act"><a class="button button_b" href="" data-modal="modal-tour"><span>Подобрать тур</span></a></div>
                             </div>
                         </div>
@@ -422,8 +423,8 @@
                                 </ul>
                             </div>
                             <div class="scriptum">Если Вы человек любознательный и нацеленый на что-то качественно новое - этот вид отдыха для Вас!</div>
-                            <div class="auth-rest__list"> Не определились куда отправится? Посмотрите экскурсионные туры и визуализируйте путишествие, а мы возьмём на себя хлопоты с документами и бронированием!</div>
-                                <div class="auth-rest__act"><a class="button button_b" href="" data-modal="modal-tour"><span>Экскурсионные туры</span></a></div>
+                            <div class="auth-rest__list none"> Не определились куда отправится? Посмотрите экскурсионные туры и визуализируйте путишествие, а мы возьмём на себя хлопоты с документами и бронированием!</div>
+                                <div class="auth-rest__act"><a class="button button_b" href="" data-modal="modal-tour"><span>Подобрать тур</span></a></div>
                         </div>
                     </div>
                 </div>
